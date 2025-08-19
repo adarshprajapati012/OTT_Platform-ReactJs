@@ -1,0 +1,17 @@
+.player{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.player-back-arrow{
+    position: absolute;
+    top:28px;
+    left: 12px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+   
+}

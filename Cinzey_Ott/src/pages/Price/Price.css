@@ -1,0 +1,106 @@
+.price-logo{
+     width: 7vw;
+     margin: 15px 30px;
+     position: absolute;
+     top:0.5%;
+     left:2%;
+     
+}
+
+.price-container {
+  text-align: center;
+  padding: 50px 20px;
+   background-image: linear-gradient(to right bottom, #341111, #42111f, #4e1231, #531949, #4e2564, #433576, #304386, #005193, #005f94, #006b8f, #007587, #297d7f);
+
+  color: white;
+}
+
+.price-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.price-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.price-card {
+  background: #29292957;
+  padding: 20px;
+  border-radius: 15px;
+  width: 280px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.517);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.price-badge {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.basic {
+  background: linear-gradient(90deg, #af8dff, #5b91cb);
+}
+
+.standard {
+  background: linear-gradient(90deg, #43cea2, #185a9d);
+}
+
+.premium {
+  background: linear-gradient(90deg, #ff512f, #dd2476);
+}
+
+.price-amount {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.price-amount span {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.price-desc {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  color: #aaa;
+}
+
+.price-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.price-features li {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.price-btn {
+  background: #4bb154;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.price-btn:hover {
+  background: rgb(0, 106, 0);
+}

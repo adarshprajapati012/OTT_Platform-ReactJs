@@ -1,0 +1,74 @@
+.parent-category-page{
+    min-height: 100vh;
+   background-image: linear-gradient(
+        to right bottom,
+        #341111, #42111f, #4e1231, #531949, #4e2564,
+        #433576, #304386, #005193, #005f94, #006b8f,
+        #007587, #297d7f
+    );
+}
+.My-logo {
+    width: 90px;
+    margin: 20px 0 0 30px;
+}
+.category-page {
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+ 
+}
+
+.category-page h2 {
+   margin-top: -15px;
+  margin-bottom: 16px;
+  font-size: 28px;
+  color: #ff6600;
+}
+
+.muted { color: #c7c7c7; }
+.error { color: #ff7b7b; }
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+}
+
+.category-card {
+  width: 185px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 10px;
+  transition: transform .25s ease, box-shadow .25s ease;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+}
+
+.category-card .poster {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.category-card .title {
+  margin: 8px 0 2px;
+  font-weight: 600;
+}
+
+.category-card .sub {
+  margin: 0;
+  color: #c9c9c9;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .category-card { width: 150px; }
+  .category-card .poster { height: 220px; }
+}

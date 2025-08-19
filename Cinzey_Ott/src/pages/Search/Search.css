@@ -1,0 +1,200 @@
+.My-logo {
+    margin: 20px 30px;
+}
+.main-container {
+    min-height: 100vh;
+    padding: 10px;
+    background-image: linear-gradient(
+        to right bottom,
+        #341111, #42111f, #4e1231, #531949, #4e2564,
+        #433576, #304386, #005193, #005f94, #006b8f,
+        #007587, #297d7f
+    );
+}
+.search-page {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.search-page h1 {
+    font-size: 2rem;
+    
+    margin-bottom: 20px;
+    color: #ff6600;
+}
+.search-form {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.search-form input {
+    padding: 12px 15px;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 6px;
+    background-color: #4f4f4fc4;
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 18px;
+}
+
+.search-form input::placeholder {
+    color: rgb(174, 174, 174);
+}
+
+.search-form button {
+    padding: 12px 20px;
+    border: none;
+    background: #f36100ec;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.search-form button:hover {
+    background: #b14700;
+}
+
+.Main-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+
+.search-card {
+    position: relative;
+    height: 290px;
+    max-width: 190px;
+    padding: 10px;
+    margin-top: 30px;
+    border: 2px solid rgb(177, 177, 177);
+    flex: 1 1 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #222;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.search-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+}
+
+.movie-card {
+    margin-bottom: -10px;
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: opacity 0.3s ease;
+}
+
+.search-card video {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 250px;
+    width: calc(100% - 20px);
+    border-radius: 6px;
+    object-fit: cover;
+    display: none;
+    z-index: 2;
+}
+
+.search-card:hover .movie-card {
+    opacity: 0.2;
+}
+
+.search-card:hover video {
+    display: block;
+}
+.search-card div {
+    text-align: center;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.overlay-icons {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
+
+.search-card:hover .overlay-icons {
+    opacity: 1;
+}
+
+.icon-btn {
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.icon-btn:hover {
+    transform: scale(1.2);
+    background: #a5a5a5;
+}
+
+.icon-btn.play {
+    font-size: 24px;
+    background: #ff6600;
+}
+
+.icon-btn.wishlist {
+    color: #ff4d6d;
+}
+
+.icon-btn.info {
+    color: #00d1ff;
+}
+
+@media (max-width:713px) {
+    .search-form input {
+    max-width: 300px;
+    
+}
+.My-logo {
+    width: 10px;
+    height: 50px;
+    margin: 20px 30px;
+}
+.search-page h1 {
+    font-size: 1.5rem;
+}
+}
+
+@media (max-width:413px) {
+    .search-form input {
+    max-width: 200px;
+    
+}
+.My-logo {
+    width: 10px;
+    height: 50px;
+    margin: 20px 30px;
+}
+.search-page h1 {
+    font-size: 1.4rem;
+}
+}

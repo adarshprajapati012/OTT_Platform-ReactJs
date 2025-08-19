@@ -1,0 +1,172 @@
+.hero-swiper {
+  width: 100%;
+
+}
+
+.hero {
+  position: relative;
+  height: 90vh;
+}
+
+.hero_banner {
+  width: 100%;
+  height: 550px;
+  object-fit: cover;
+  mask-image: linear-gradient(to right, transparent, black 50%);
+}
+
+.hero-caption {
+  position: absolute;
+  top: 50%;
+  left: 7%;
+  color: white;
+  z-index: 10;
+}
+
+.hero-caption .hero-title {
+  font-size: 50px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.hero p {
+  max-width: 700px;
+  font-size: 17px;
+  margin-bottom: 30px;
+}
+
+.hero-banner-btn {
+  display: flex;
+  gap: 10px;
+}
+
+.hero-banner-btn .btn {
+  border: 0;
+  outline: 0;
+  padding: 8px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  background: rgb(233, 233, 233);
+  cursor: pointer;
+  border-radius: 30px;
+  transition: background 0.4s ease, transform 0.3s ease;
+}
+
+.hero-banner-btn .btn img {
+  width: 25px;
+}
+
+.hero-banner-btn .info-btn {
+  color: white;
+  background: #6d6d6eb3;
+}
+
+.hero-banner-btn .btn:hover {
+  background: linear-gradient(153deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+  transform: scale(1.05);
+}
+
+.hero-banner-btn .info-btn:hover {
+  background: linear-gradient(90deg, rgba(63, 181, 232, 1) 0%, rgba(81, 219, 194, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 25px;
+    height: 25px;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 20px;
+    height: 20px;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 842px) {
+
+  .hero {
+    height: 60vh;
+  }
+
+  .hero_banner {
+    height: 550px;
+
+  }
+
+  .hero-caption .hero-title {
+    font-size: 30px;
+
+  }
+
+  .hero p {
+    max-width: 400px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 1;
+  }
+
+  .hero-banner-btn .btn {
+    padding: 5px 8px;
+    gap: 4px;
+    font-size: 13px;
+  }
+
+  .hero-banner-btn .btn img {
+    width: 18px;
+  }
+}
+
+@media (max-width: 545px) {
+
+  .hero {
+    height: 50vh;
+  }
+
+  .hero_banner {
+    height: 500px;
+
+  }
+
+  .hero-caption .hero-title {
+    margin-top: 20px;
+    font-size: 20px;
+
+  }
+
+  .hero p {
+    max-width: 200px;
+  }
+}
