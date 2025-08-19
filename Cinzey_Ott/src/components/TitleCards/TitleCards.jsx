@@ -1,7 +1,8 @@
 import './TitleCards.css';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import { FaHeart, FaPlay } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+
 
 const TitleCards = ({ title, fetchUrl }) => {
   const [movies, setMovies] = useState([]);
