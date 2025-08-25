@@ -3,16 +3,16 @@ import './Search.css';
 import logo from '../../assets/logo.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { FaPlay, FaHeart, FaInfoCircle } from "react-icons/fa";
+import { FaPlay, FaInfoCircle } from "react-icons/fa";
 
 const Search = () => {
     const [movieAllData, setMovieAllData] = useState([]);
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState(localStorage.getItem("lastQuery") || "");
     const [hoveredMovie, setHoveredMovie] = useState(null);
-    const [wishlist, setWishlist] = useState(
-        JSON.parse(localStorage.getItem("wishlist")) || []
-    );
     const navigate = useNavigate();
+
+    const TMDB_API_KEY = "79671df01fbe69abe0e1e3b9492eb10e";
+
     const getMovieData = async (searchQuery) => {
         try {
             if (!searchQuery) {
@@ -20,21 +20,24 @@ const Search = () => {
                 return;
             }
             const response = await axios.get(
-                `https://www.omdbapi.com/?s=${searchQuery}&apikey=2db30ce7`
+                `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${searchQuery}&language=en-US&page=1&include_adult=false`
             );
-            setMovieAllData(response.data.Search || []);
+            setMovieAllData(response.data.results || []);
+            localStorage.setItem("lastQuery", searchQuery);
+            localStorage.setItem("lastResults", JSON.stringify(response.data.results || []));
         } catch (error) {
             console.error("Error fetching movie data:", error);
         }
     };
 
     useEffect(() => {
-        if (query.trim() !== "") {
+        const savedResults = JSON.parse(localStorage.getItem("lastResults"));
+        if (savedResults && savedResults.length > 0) {
+            setMovieAllData(savedResults);
+        } else if (query.trim() !== "") {
             getMovieData(query);
-        } else {
-            setMovieAllData([]);
         }
-    }, [query]);
+    }, []);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -42,29 +45,24 @@ const Search = () => {
             getMovieData(query);
         }
     };
+
     const handlePlay = (movie) => {
-        navigate(`/player/${movie.imdbID}`);
-    };
-    const addToWishlist = (movie) => {
-        const updatedWishlist = [...wishlist, movie];
-        setWishlist(updatedWishlist);
-        localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
-        alert(`${movie.Title} added to wishlist!`);
+        navigate(`/player/${movie.id}`);
     };
 
     const handleInfo = async (movie) => {
         try {
             const response = await axios.get(
-                `https://www.omdbapi.com/?i=${movie.imdbID}&apikey=2db30ce7`
+                `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${TMDB_API_KEY}&language=en-US`
             );
             const details = response.data;
 
             alert(
-                `🎬 ${details.Title} (${details.Year})
-📖 Plot: ${details.Plot}
-⭐ IMDB Rating: ${details.imdbRating}
-🎭 Genre: ${details.Genre}
-🎥 Director: ${details.Director}`
+                `🎬 ${details.title} (${details.release_date?.slice(0, 4)})
+📖 Plot: ${details.overview}
+⭐ Rating: ${details.vote_average}
+🎭 Genre: ${details.genres.map(g => g.name).join(", ")}
+🎥 Runtime: ${details.runtime} min`
             );
         } catch (error) {
             console.error("Error fetching movie details:", error);
@@ -95,39 +93,27 @@ const Search = () => {
                     movieAllData.map((movie) => (
                         <div
                             className="search-card"
-                            key={movie.imdbID}
-                            onMouseEnter={() => setHoveredMovie(movie.imdbID)}
+                            key={movie.id}
+                            onMouseEnter={() => setHoveredMovie(movie.id)}
                             onMouseLeave={() => setHoveredMovie(null)}
                         >
-                            {hoveredMovie === movie.imdbID ? (
-                                <video
-                                    className="movie-card"
-                                    autoPlay
-                                    loop
-                                    muted
-                                    src="https://www.w3schools.com/html/mov_bbb.mp4"
-                                />
-                            ) : (
-                                <img
-                                    className="movie-card"
-                                    src={movie.Poster}
-                                    alt={movie.Title}
-                                />
-                            )}
+                            <img
+                                className="movie-card"
+                                src={
+                                    movie.poster_path
+                                        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                                        : "https://via.placeholder.com/500x750?text=No+Image"
+                                }
+                                alt={movie.title}
+                            />
 
-                            {hoveredMovie === movie.imdbID && (
+                            {hoveredMovie === movie.id && (
                                 <div className="overlay-icons">
                                     <button
                                         className="icon-btn play"
                                         onClick={() => handlePlay(movie)}
                                     >
                                         <FaPlay />
-                                    </button>
-                                    <button
-                                        className="icon-btn wishlist"
-                                        onClick={() => addToWishlist(movie)}
-                                    >
-                                        <FaHeart />
                                     </button>
                                     <button
                                         className="icon-btn info"
@@ -139,8 +125,8 @@ const Search = () => {
                             )}
 
                             <div className="movie-info">
-                                <p>{movie.Title}</p>
-                                <p>{movie.Year}</p>
+                                <p>{movie.title}</p>
+                                <p>{movie.release_date?.slice(0, 4)}</p>
                             </div>
                         </div>
                     ))

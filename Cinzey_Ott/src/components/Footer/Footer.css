@@ -107,6 +107,7 @@
     .footer-content {
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 40px 10px;
     }
 
     .social-links {

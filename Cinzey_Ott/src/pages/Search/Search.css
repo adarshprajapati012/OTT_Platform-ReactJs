@@ -21,7 +21,6 @@
 
 .search-page h1 {
     font-size: 2rem;
-    
     margin-bottom: 20px;
     color: #ff6600;
 }
@@ -99,25 +98,10 @@
     transition: opacity 0.3s ease;
 }
 
-.search-card video {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    height: 250px;
-    width: calc(100% - 20px);
-    border-radius: 6px;
-    object-fit: cover;
-    display: none;
-    z-index: 2;
-}
-
 .search-card:hover .movie-card {
-    opacity: 0.2;
+    opacity: 0.3;
 }
 
-.search-card:hover video {
-    display: block;
-}
 .search-card div {
     text-align: center;
     color: #fff;
@@ -161,40 +145,34 @@
     background: #ff6600;
 }
 
-.icon-btn.wishlist {
-    color: #ff4d6d;
-}
-
 .icon-btn.info {
     color: #00d1ff;
 }
 
 @media (max-width:713px) {
     .search-form input {
-    max-width: 300px;
-    
-}
-.My-logo {
-    width: 10px;
-    height: 50px;
-    margin: 20px 30px;
-}
-.search-page h1 {
-    font-size: 1.5rem;
-}
+        max-width: 300px;
+    }
+    .My-logo {
+        width: 10px;
+        height: 50px;
+        margin: 20px 30px;
+    }
+    .search-page h1 {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width:413px) {
     .search-form input {
-    max-width: 200px;
-    
-}
-.My-logo {
-    width: 10px;
-    height: 50px;
-    margin: 20px 30px;
-}
-.search-page h1 {
-    font-size: 1.4rem;
-}
+        max-width: 200px;
+    }
+    .My-logo {
+        width: 10px;
+        height: 50px;
+        margin: 20px 30px;
+    }
+    .search-page h1 {
+        font-size: 1.4rem;
+    }
 }

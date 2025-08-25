@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Home.css';
 import Navbar from '../../components/Navbar/Navbar';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -54,8 +54,18 @@ const Home = () => {
     }
   ];
 
+  const [selectedHero, setSelectedHero] = useState(null);
+
   const handlePlay = (trailerUrl) => {
     window.open(trailerUrl, "_blank");
+  };
+
+  const handleMoreInfo = (hero) => {
+    setSelectedHero(hero);
+  };
+
+  const closeModal = () => {
+    setSelectedHero(null);
   };
 
   return (
@@ -83,7 +93,10 @@ const Home = () => {
                   >
                     <img src={play_icon} alt="" /> Play
                   </button>
-                  <button className='btn info-btn'>
+                  <button
+                    className='btn info-btn'
+                    onClick={() => handleMoreInfo(item)}
+                  >
                     <img src={info_icon} alt="" /> More Info
                   </button>
                 </div>
@@ -92,6 +105,23 @@ const Home = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {selectedHero && (
+        <div className="info-modal">
+          <div className="info-content">
+            <span className="close-btn" onClick={closeModal}>&times;</span>
+            <img src={selectedHero.img} alt={selectedHero.title} className="info-img" />
+            <h2>{selectedHero.title}</h2>
+            <p>{selectedHero.desc}</p>
+            <button
+              className="btn trailer-btn"
+              onClick={() => handlePlay(selectedHero.trailer)}
+            >
+              <span className="play-icon"></span> Watch Trailer
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="more-card">
         <TitleCards
